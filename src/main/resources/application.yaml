@@ -1,0 +1,37 @@
+# Application properties
+
+spring:
+  application:
+    name: MailGun-Service
+
+  # Using H2 for simplicity
+  datasource:
+    url: jdbc:h2:mem:otpdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update # Creates tables on startup
+      show-sql: true
+      properties:
+        hibernate:
+          format_sql: true
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+mailgun:
+  api-key: ${MAILGUN_API_KEY}
+  api_base_url: ${MAILGUN_BASE_URL}
+  sending_domain: ${MAILGUN_SENDING_DOMAIN}
+  from_email: ${MAILGUN_FROM_EMAIL}
+
+server:
+  port: 8081
+  servlet:
+    context-path: /api/v1
